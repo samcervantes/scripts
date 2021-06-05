@@ -1,0 +1,27 @@
+#! /bin/sh
+
+# Check to make sure we've received an argument
+if [ $# -eq 0 ]; then
+	echo "Usage: runcpp <source-file.cpp>"
+	exit 1
+fi
+
+CPPFILE=$1
+OUTFILE=${CPPFILE%.cpp}
+
+echo -n "Compiling ${CPPFILE} with gcc..."
+
+# Try to compile the source code
+if g++ ${CPPFILE} -o ${OUTFILE}; then
+
+	# The source code compiled
+	echo " successfully complied."
+	echo "Running executable file ${OUTFILE}..."
+	# Run the executable
+	./${OUTFILE}
+
+else
+	
+	echo "Failed to compile, exit status: $?"
+
+fi
