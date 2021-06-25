@@ -9,13 +9,13 @@ fi
 CPPFILE=$1
 OUTFILE=${CPPFILE%.cpp}
 
-echo -n "Compiling ${CPPFILE} with gcc..."
+echo "Compiling ${CPPFILE} with gcc..."
 
 # Try to compile the source code
-if g++ ${CPPFILE} -o ${OUTFILE}; then
+if g++ -std=c++17 -fconcepts ${CPPFILE} -o ${OUTFILE}; then
 
 	# The source code compiled
-	echo " successfully complied."
+	echo "Successfully complied."
 	echo "Running executable file ${OUTFILE}..."
 	# Run the executable
 	./${OUTFILE}
